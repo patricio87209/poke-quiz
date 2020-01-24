@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { string, bool, func } from "prop-types";
 import styled from "styled-components";
+import { getQuiz } from "../services/pokemons";
 
 const QuizLayout = styled.main`
   display: grid;
@@ -11,16 +12,19 @@ const QuizFigure = styled.figure``;
 
 const QuizOptions = styled.div``;
 
-export default function Quiz() {
+export default function Quiz() {  
+  const [quiz, setQuiz] = useState(null);
+
+  useEffect(() => {
+    getQuiz().then(setQuiz);
+  }, []);
+
   return (
     <QuizLayout>
       <QuizFigure>sarasa</QuizFigure>
       <QuizOptions>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-      </QuizOptions>
+        {quiz && quiz.options.map(({id, name}) => <div key={id}>{name}</div>) }
+        </QuizOptions>
     </QuizLayout>
   );
 }
