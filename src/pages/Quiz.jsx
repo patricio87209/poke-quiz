@@ -12,6 +12,9 @@ import { onLoad, onAnswer, onStart } from "../lib/Quiz/actions";
 import { createLoadingState, stateTypes } from "../lib/Quiz/states";
 
 const QuizLayout = styled.main`
+  padding: 1em;
+  max-width: 460px;
+  margin: auto;
   display: grid;
   grid-template-rows: 1fr 1fr;
   height: 100%;
@@ -58,14 +61,14 @@ export default function Quiz() {
   const onAnswerSelected = useCallback(
     ({ target: { id: selectedAnswer } }) => {
       dispatch(onAnswer(selectedAnswer));
-      setTimeout(loadQuiz, 2000);
+      setTimeout(loadQuiz, 3000);
     },
     [dispatch, loadQuiz]
   );
 
   return (
     <QuizLayout>
-      <Confetti recycle= {type === stateTypes.win}/>
+      {type === stateTypes.win && <Confetti recycle={false} friction= {1.02} initialVelocityY={-10} />}
       <QuizFigure>
         {options && answer && (
           <QuizImage

@@ -24,8 +24,9 @@ export function createLoseState(prevState) {
     type: stateTypes.lose
   };
 }
-export function createLoadingState() {
+export function createLoadingState(prevState) {
   return {
+    ...prevState,
     type: stateTypes.loading
   };
 }
