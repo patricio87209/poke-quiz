@@ -7,7 +7,7 @@ import ButtonGroup from "../components/ButtonGroup";
 import { getQuiz } from "../services/pokemons";
 
 import reducer from "../lib/Quiz/reducer";
-import { onLoad, onAnswer } from "../lib/Quiz/actions";
+import { onLoad, onAnswer, onStart } from "../lib/Quiz/actions";
 import { createLoadingState } from "../lib/Quiz/states";
 
 const QuizLayout = styled.main`
@@ -30,13 +30,19 @@ export default function Quiz() {
     [dispatch]
   );
 
-  useEffect(() => {
+  const loadQuiz = useCallback(() => {
+    dispatch(onStart());
     getQuiz().then(({ answer, options }) => onQuizLoaded(answer, options));
   }, [onQuizLoaded]);
 
+  useEffect(loadQuiz, []);
+
   const onAnswerSelected = useCallback(
-    ({ target: { id: selectedAnswer } }) => dispatch(onAnswer(selectedAnswer)),
-    [dispatch]
+    ({ target: { id: selectedAnswer } }) => {
+      dispatch(onAnswer(selectedAnswer));
+      setTimeout(loadQuiz, 2000);
+    },
+    [dispatch, loadQuiz]
   );
 
   return (
