@@ -30,7 +30,7 @@ function generateQuiz() {
     getRandomInt(pokemonLimit),
     getRandomInt(pokemonLimit)
   ];
-  const answer = options[getRandomInt(options.lenght)];
+  const answer = options[getRandomInt(options.length)];
 
   return { options, answer };
 }

@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { string, bool, func } from "prop-types";
 import styled from "styled-components";
 import { getQuiz } from "../services/pokemons";
+import Button from "../components/Button";
+import ButtonGroup from "../components/ButtonGroup";
 
 const QuizLayout = styled.main`
   display: grid;
@@ -12,7 +14,7 @@ const QuizFigure = styled.figure``;
 
 const QuizOptions = styled.div``;
 
-export default function Quiz() {  
+export default function Quiz() {
   const [quiz, setQuiz] = useState(null);
 
   useEffect(() => {
@@ -21,10 +23,18 @@ export default function Quiz() {
 
   return (
     <QuizLayout>
-      <QuizFigure>sarasa</QuizFigure>
+      <QuizFigure>
+        <img src={quiz && quiz.options.find(pokemon => pokemon.id === quiz.answer).image} alt= "answer"/>
+      </QuizFigure>
+
       <QuizOptions>
-        {quiz && quiz.options.map(({id, name}) => <div key={id}>{name}</div>) }
-        </QuizOptions>
+        <ButtonGroup>
+          {quiz &&
+            quiz.options.map(({ id, name }) => (
+              <Button key={id}>{name}</Button>
+            ))}
+        </ButtonGroup>
+      </QuizOptions>
     </QuizLayout>
   );
 }
