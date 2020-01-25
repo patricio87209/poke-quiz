@@ -32,7 +32,9 @@ const QuizImage = styled.img.attrs(({ offuscated }) => ({
   opacity: 1;
 `;
 
-const QuizOptions = styled.div``;
+const QuizOptions = styled.div`
+  font-family: "pokemon_solidnormal";
+`;
 
 export default function Quiz() {
   const [{ type, answer, options }, dispatch] = useReducer(
