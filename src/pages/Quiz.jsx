@@ -15,7 +15,22 @@ const QuizLayout = styled.main`
   grid-template-rows: 1fr 1fr;
   height: 100%;
 `;
-const QuizFigure = styled.figure``;
+
+const QuizFigure = styled.figure`
+  position: relative;
+`;
+
+const QuizImage = styled.img.attrs(({ offuscated }) => ({
+  style: {
+    filter: offuscated ? "contrast(0) saturate(0%) brightness(0%)" : undefined
+  }
+}))`
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+`;
 
 const QuizOptions = styled.div``;
 
@@ -49,9 +64,10 @@ export default function Quiz() {
     <QuizLayout>
       <QuizFigure>
         {options && answer && (
-          <img
+          <QuizImage
             src={options.find(pokemon => pokemon.id === answer).image}
             alt="answer"
+            offuscated={type === stateTypes.playing}
           />
         )}
       </QuizFigure>
