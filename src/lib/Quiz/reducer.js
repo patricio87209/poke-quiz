@@ -45,5 +45,5 @@ function endGameReducer(state, action) {
 }
 
 function isCorrectAnswer(state, action) {
-  return state.answer === action.answer;
+  return +state.answer === +action.answer;
 }
