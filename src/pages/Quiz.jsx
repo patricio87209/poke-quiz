@@ -1,9 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { string, bool, func } from "prop-types";
+import React, { useEffect, useReducer, useCallback } from "react";
 import styled from "styled-components";
-import { getQuiz } from "../services/pokemons";
+
 import Button from "../components/Button";
 import ButtonGroup from "../components/ButtonGroup";
+
+import { getQuiz } from "../services/pokemons";
+
+import reducer from "../lib/Quiz/reducer";
+import { onLoad } from "../lib/Quiz/actions";
+import { createLoadingState } from "../lib/Quiz/states";
 
 const QuizLayout = styled.main`
   display: grid;
@@ -15,24 +20,32 @@ const QuizFigure = styled.figure``;
 const QuizOptions = styled.div``;
 
 export default function Quiz() {
-  const [quiz, setQuiz] = useState(null);
+  const [{ answer, options }, dispatch] = useReducer(reducer,createLoadingState());
+
+  const onQuizLoaded = useCallback(
+    (answer, options) => dispatch(onLoad(answer, options)),
+    [dispatch]
+  );
 
   useEffect(() => {
-    getQuiz().then(setQuiz);
-  }, []);
+    getQuiz().then(({ answer, options }) => onQuizLoaded(answer, options));
+  }, [onQuizLoaded]);
 
   return (
     <QuizLayout>
       <QuizFigure>
-        <img src={quiz && quiz.options.find(pokemon => pokemon.id === quiz.answer).image} alt= "answer"/>
+        {options && answer && (
+          <img
+            src={options.find(pokemon => pokemon.id === answer).image}
+            alt="answer"
+          />
+        )}
       </QuizFigure>
 
       <QuizOptions>
         <ButtonGroup>
-          {quiz &&
-            quiz.options.map(({ id, name }) => (
-              <Button key={id}>{name}</Button>
-            ))}
+          {options &&
+            options.map(({ id, name }) => <Button key={id}>{name}</Button>)}
         </ButtonGroup>
       </QuizOptions>
     </QuizLayout>
