@@ -8,7 +8,7 @@ import { getQuiz } from "../services/pokemons";
 
 import reducer from "../lib/Quiz/reducer";
 import { onLoad, onAnswer, onStart } from "../lib/Quiz/actions";
-import { createLoadingState } from "../lib/Quiz/states";
+import { createLoadingState, stateTypes } from "../lib/Quiz/states";
 
 const QuizLayout = styled.main`
   display: grid;
@@ -20,7 +20,7 @@ const QuizFigure = styled.figure``;
 const QuizOptions = styled.div``;
 
 export default function Quiz() {
-  const [{ answer, options }, dispatch] = useReducer(
+  const [{ type, answer, options }, dispatch] = useReducer(
     reducer,
     createLoadingState()
   );
@@ -60,7 +60,12 @@ export default function Quiz() {
         <ButtonGroup>
           {options &&
             options.map(({ id, name }) => (
-              <Button key={id} id={id} onClick={onAnswerSelected}>
+              <Button
+                key={id}
+                id={id}
+                onClick={onAnswerSelected}
+                disabled={type !== stateTypes.playing}
+              >
                 {name}
               </Button>
             ))}

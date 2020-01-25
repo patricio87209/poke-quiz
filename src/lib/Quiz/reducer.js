@@ -1,7 +1,16 @@
-import { stateTypes, createPlayingState, createLoadingState, createWinState, createLoseState } from './states'
-import { actionTypes } from './actions'
+import {
+  stateTypes,
+  createPlayingState,
+  createLoadingState,
+  createWinState,
+  createLoseState
+} from "./states";
+import { actionTypes } from "./actions";
 
-export default function quizReducer(state = { type: stateTypes.loading }, action) {
+export default function quizReducer(
+  state = { type: stateTypes.loading },
+  action
+) {
   switch (state.type) {
     case stateTypes.loading:
       return loadingReducer(state, action);
@@ -28,8 +37,8 @@ function playingReducer(state, action) {
   switch (action.type) {
     case actionTypes.onAnswer:
       return isCorrectAnswer(state, action)
-        ? createWinState()
-        : createLoseState();
+        ? createWinState(state)
+        : createLoseState(state);
     default:
       return state;
   }
