@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useCallback } from "react";
 import styled from "styled-components";
+import Confetti from 'react-confetti'
 
 import Button from "../components/Button";
 import ButtonGroup from "../components/ButtonGroup";
@@ -64,6 +65,7 @@ export default function Quiz() {
 
   return (
     <QuizLayout>
+      <Confetti recycle= {type === stateTypes.win}/>
       <QuizFigure>
         {options && answer && (
           <QuizImage
