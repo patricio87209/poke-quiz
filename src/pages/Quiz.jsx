@@ -18,6 +18,7 @@ const QuizLayout = styled.main`
   display: grid;
   grid-template-rows: 1fr 1fr;
   height: 100%;
+  background: darkgreen;
 `;
 
 const QuizFigure = styled.figure`
