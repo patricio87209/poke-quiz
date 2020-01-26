@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/poke-quiz/static/css/main.002c7cfd.chunk.css",
+    "main.js": "/poke-quiz/static/js/main.ccc02093.chunk.js",
+    "main.js.map": "/poke-quiz/static/js/main.ccc02093.chunk.js.map",
+    "runtime-main.js": "/poke-quiz/static/js/runtime-main.fb99a025.js",
+    "runtime-main.js.map": "/poke-quiz/static/js/runtime-main.fb99a025.js.map",
+    "static/js/2.c6adf3a6.chunk.js": "/poke-quiz/static/js/2.c6adf3a6.chunk.js",
+    "static/js/2.c6adf3a6.chunk.js.map": "/poke-quiz/static/js/2.c6adf3a6.chunk.js.map",
+    "index.html": "/poke-quiz/index.html",
+    "precache-manifest.867863a2431690230dd69914d1e9c928.js": "/poke-quiz/precache-manifest.867863a2431690230dd69914d1e9c928.js",
+    "service-worker.js": "/poke-quiz/service-worker.js",
+    "static/css/main.002c7cfd.chunk.css.map": "/poke-quiz/static/css/main.002c7cfd.chunk.css.map",
+    "static/js/2.c6adf3a6.chunk.js.LICENSE": "/poke-quiz/static/js/2.c6adf3a6.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fb99a025.js",
+    "static/js/2.c6adf3a6.chunk.js",
+    "static/css/main.002c7cfd.chunk.css",
+    "static/js/main.ccc02093.chunk.js"
+  ]
+}
