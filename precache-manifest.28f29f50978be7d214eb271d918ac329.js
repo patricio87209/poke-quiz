@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4c2705c8c5d7f7597ac4f1219d2c198c",
+    "revision": "c025144bf16e219201406eb681ebfa07",
     "url": "/poke-quiz/index.html"
   },
   {
-    "revision": "fba0e36226bd56a7f42f",
+    "revision": "807a5a5691ab0f60cb62",
     "url": "/poke-quiz/static/css/main.002c7cfd.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/poke-quiz/static/js/2.c6adf3a6.chunk.js.LICENSE"
   },
   {
-    "revision": "fba0e36226bd56a7f42f",
-    "url": "/poke-quiz/static/js/main.ccc02093.chunk.js"
+    "revision": "807a5a5691ab0f60cb62",
+    "url": "/poke-quiz/static/js/main.0265ea1f.chunk.js"
   },
   {
     "revision": "89e4ce158571102ae3ac",
