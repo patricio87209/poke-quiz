@@ -3,7 +3,7 @@ import { create } from "axios";
 const baseURL = "https://pokeapi.co/api/v2";
 
 const axios = create({ baseURL });
-const pokemonLimit = 100;
+const pokemonLimit = 152;
 
 export function getQuiz() {
   const { answer, options } = generateQuiz();
@@ -24,12 +24,19 @@ function getPokemon(id) {
 }
 
 function generateQuiz() {
-  const options = [
-    getRandomInt(pokemonLimit),
-    getRandomInt(pokemonLimit),
-    getRandomInt(pokemonLimit),
-    getRandomInt(pokemonLimit)
-  ];
+  let options = new Set()
+  
+  while(options.size < 4){
+    options.add(getRandomInt(pokemonLimit));
+  }
+  
+  // const options = [
+  //   getRandomInt(pokemonLimit),
+  //   getRandomInt(pokemonLimit),
+  //   getRandomInt(pokemonLimit),
+  //   getRandomInt(pokemonLimit)
+  // ];
+  options = Array.from(options)
   const answer = options[getRandomInt(options.length)];
 
   return { options, answer };

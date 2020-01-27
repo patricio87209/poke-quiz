@@ -18,7 +18,7 @@ const QuizLayout = styled.main`
   display: grid;
   grid-template-rows: 1fr 1fr;
   height: 100%;
-  background: darkgreen;
+  background: #9aceff;
 `;
 
 const QuizFigure = styled.figure`
@@ -69,7 +69,7 @@ export default function Quiz() {
 
   return (
     <QuizLayout>
-      {type === stateTypes.win && <Confetti recycle={false} friction= {1.02} initialVelocityY={-10} />}
+      {type === stateTypes.win && <Confetti recycle={false} friction= {1.02} initialVelocityY={-10} colors= {['red', 'black']}/>}
       <QuizFigure>
         {options && answer && (
           <QuizImage
